@@ -16,10 +16,9 @@ select
   'from_date' as name,
   'From date' as label,
   'date' as type,
-  (select to_char((CURRENT_TIMESTAMP AT TIME ZONE 'EDT'), 'YYYY-MM-DD')) as value;
-  /* (select to_char(date_trunc('week', (CURRENT_TIMESTAMP AT TIME ZONE 'EDT'))), 'YYYY-MM-DD') as value; */
+  (select to_char(date_trunc('week', CURRENT_TIMESTAMP AT TIME ZONE 'EDT'), 'YYYY-MM-DD')) as value;
 select
   'to_date' as name,
   'To date' as label,
   'date' as type,
-  (select to_char((CURRENT_TIMESTAMP AT TIME ZONE 'EDT') + interval '1 day', 'YYYY-MM-DD')) as value;
+  (select to_char(date_trunc('week', CURRENT_TIMESTAMP AT TIME ZONE 'EDT') + INTERVAL '5 days', 'YYYY-MM-DD')) as value;
