@@ -1,3 +1,6 @@
+SELECT 'redirect' AS component, 'login.sql' AS link
+WHERE NOT EXISTS (SELECT 1 FROM Sessions WHERE session_token = sqlpage.cookie('session_token'));
+
 DELETE FROM ManualCounts 
 WHERE $action = 'delete' AND count_id = $delete_id::int
 RETURNING 'redirect' AS component, 'index.sql' AS link;

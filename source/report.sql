@@ -1,3 +1,6 @@
+SELECT 'redirect' AS component, 'login.sql' AS link
+WHERE NOT EXISTS (SELECT 1 FROM Sessions WHERE session_token = sqlpage.cookie('session_token'));
+
 select 
   'shell' as component,
   'FIU Parking' as title,
